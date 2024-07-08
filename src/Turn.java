@@ -1,27 +1,27 @@
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Turn {
+    Scanner s = new Scanner(System.in);
     String[] validChoices = {"rock", "scissors", "dynamite"};
 
     public String makeTurn(int t) {
-        System.out.print("Turn: " + t);
+        System.out.println("Turn: " + t);
         String playerChoice = playerChoice();
+        System.out.println(playerChoice);
         String botChoice = botChoice();
+        System.out.println(botChoice);
         return checkWhoWins(playerChoice, botChoice);
     }
 
     public String playerChoice() {
-        Scanner s = new Scanner(System.in);
         String playerChoice = null;
         while (!Arrays.asList(validChoices).contains(playerChoice)) {
-            System.out.print("Please enter your choice: 'rock', 'scissors' or 'dynamite'?");
+            System.out.print("Please enter a valid choice from: 'rock', 'scissors' or 'dynamite'. ");
             playerChoice = s.nextLine();
-            playerChoice = playerChoice.toLowerCase();
             if (!Arrays.asList(validChoices).contains(playerChoice)) {
-                System.out.print("Please select one of the three valid options above...");
+                System.out.println("Invalid input...");
             }
         }
         return playerChoice;
